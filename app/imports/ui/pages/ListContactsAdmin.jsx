@@ -5,7 +5,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Stuffs } from '../../api/stuff/Stuff';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Contacts } from '../../api/contact/Contacts';
-import Contact from '../components/StuffItem';
+import ContactAdmin from '../components/ContactAdmin';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const ListContactsAdmin = () => {
@@ -36,7 +36,7 @@ const ListContactsAdmin = () => {
       <Row xs={1} md={2}>
         {contacts.map(contact => (
           <Col>
-            <Contact contact={contact} />
+            <ContactAdmin contact={contact} />
           </Col>
         ))}
       </Row>

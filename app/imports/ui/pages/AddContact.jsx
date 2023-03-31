@@ -1,25 +1,15 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, LongTextField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
-import { Stuffs } from '../../api/stuff/Stuff';
 import { Contacts } from '../../api/contact/Contacts';
 
-// Create a schema to specify the structure of the data to appear in the form.
-const formSchema = new SimpleSchema({
-  firstName: String,
-  lastName: String,
-  address: String,
-  image: String,
-  description: String,
-});
+const schema = Contacts.schema.omit('owner');
+const bridge = new SimpleSchema2Bridge(schema);
 
-const bridge = new SimpleSchema2Bridge(formSchema);
-
-/* Renders the AddStuff page for adding a document. */
+/* Renders the AddContact page for adding a document. */
 const AddContact = () => {
 
   // On submit, insert the data.
@@ -58,7 +48,7 @@ const AddContact = () => {
                   <Col> <TextField name="image" /></Col>
                 </Row>
                 <LongTextField name="description" />
-                <SubmitField />
+                <SubmitField value="submit" />
                 <ErrorsField />
               </Card.Body>
             </Card>

@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 const ContactAdmin = ({ contact }) => (
   <Card className="h-100">
-    <Card.Header>
-      <Image src={contact.image} width="75" />
+    <Card.Header> <img src={contact.image} alt="pfp" width="75" /></Card.Header>
+    <Card.Body>
       <Card.Title>{contact.firstName} {contact.lastName}</Card.Title>
       <Card.Subtitle>{contact.address}</Card.Subtitle>
-    </Card.Header>
-    <Card.Body>
       <Card.Text>{contact.description}</Card.Text>
-      <Link to={`/edit/${contact._id}`}>Edit</Link>
+      <Row>
+        <Col> <Card.Footer> {contact.owner}</Card.Footer> </Col>
+        <Col> <Link to={`/edit/${contact._id}`}>Edit</Link> </Col>
+      </Row>
     </Card.Body>
   </Card>
 );
