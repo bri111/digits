@@ -2,12 +2,10 @@ import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, HiddenField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import PropTypes from 'prop-types';
 import SimpleSchema from 'simpl-schema';
 import { Notes } from '../../api/note/Notes';
-import { Contacts } from '../../api/contact/Contacts';
 // import PropTypes from "prop-types";
 
 // const schema = Notes.schema.omit('owner');

@@ -2,12 +2,11 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Stuffs } from '../../api/stuff/Stuff';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Contacts } from '../../api/contact/Contacts';
 import ContactAdmin from '../components/ContactAdmin';
 
-/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/* Renders a table containing all the Stuff documents. Use <StuffItem> to render each row. */
 const ListContactsAdmin = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, contacts } = useTracker(() => {
