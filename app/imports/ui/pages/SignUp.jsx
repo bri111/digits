@@ -19,18 +19,23 @@ const SignUp = ({ location }) => {
     password: String,
   });
   const bridge = new SimpleSchema2Bridge(schema);
-
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const { email, password } = doc;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        setError(err.reason);
-      } else {
-        setError('');
-        setRedirectToRef(true);
-      }
-    });
+    if (email.includes('@hawaii.edu')) {
+      Accounts.createUser({ email, username: email, password }, (err) => {
+        if (err) {
+          setError(err.reason);
+        } else {
+          setError('');
+          setRedirectToRef(true);
+        }
+      });
+    } else {
+      setError('Email is not a hawaii.edu');
+
+    }
+
   };
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
@@ -39,6 +44,7 @@ const SignUp = ({ location }) => {
   if (redirectToReferer) {
     return <Navigate to={from} />;
   }
+
   return (
     <Container id="signup-page" className="py-3">
       <Row className="justify-content-center">
